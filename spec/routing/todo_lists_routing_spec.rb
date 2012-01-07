@@ -31,5 +31,11 @@ describe TodoListsController do
       delete("/todo_lists/1").should route_to("todo_lists#destroy", :id => "1")
     end
 
+    describe "nested todo_item entries" do
+      it "displays nested todo_item entries" do
+        get("/todo_lists/1/todo_items").should route_to("todo_items#show", :todo_list_id => "1")
+      end
+    end
+
   end
 end

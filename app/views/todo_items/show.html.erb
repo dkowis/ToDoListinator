@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Entry:</b>
+  <%= @todo_item.entry %>
+</p>
+
+<p>
+  <b>Due date:</b>
+  <%= @todo_item.due_date %>
+</p>
+
+<p>
+  <b>Todo list:</b>
+  <%= @todo_item.todo_list_id %>
+</p>
+
+<p>
+  <b>Complete:</b>
+  <%= @todo_item.complete %>
+</p>
+
+
+<%= link_to 'Edit', edit_todo_item_path(@todo_item) %> |
+<%= link_to 'Back', todo_items_path %>

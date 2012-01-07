@@ -1,4 +1,6 @@
 TodoSample::Application.routes.draw do
+  resources :todo_items
+
   resources :todo_lists
 
   # The priority is based upon order of creation:
