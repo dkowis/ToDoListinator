@@ -1,0 +1,23 @@
+<h1>Available Todo Lists</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @todo_lists.each do |todo_list| %>
+  <tr>
+    <td><%= todo_list.title %></td>
+    <td><%= link_to 'Show', todo_list %></td>
+    <td><%= link_to 'Edit', edit_todo_list_path(todo_list) %></td>
+    <td><%= link_to 'Destroy', todo_list, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Todo List', new_todo_list_path %>
