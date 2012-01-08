@@ -5,10 +5,10 @@
  *= require_self
  *= require_tree . 
 */
-nav#global ul {
+nav#global ul li {
   margin: 0;
-  padding:0;
-  display:inline;
+  padding: 0;
+  display: inline;
   list-style-type: none;
 }
 
@@ -21,6 +21,12 @@ div#main {
   height: 100%;
 }
 
-header {
+header#global {
   border:1px solid black;
+  margin-bottom: 10px;
+}
+
+section#todo_lists article {
+  border: 1px solid blue;
+  margin-bottom: 5px;
 }

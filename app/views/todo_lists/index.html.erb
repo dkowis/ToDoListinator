@@ -1,23 +1,15 @@
-<h1>Available Todo Lists</h1>
+<section id="todo_lists">
+  <% @todo_lists.each do |todo_list| %>
+    <article>
+      <header>
+        <h1><%= link_to todo_list.title, todo_list %></h1>
+      </header>
+      <p>Here's where I should render all the todos in the list</p>
+      <footer>
+        <%= link_to 'Edit', edit_todo_list_path(todo_list) %>
+        <%= link_to 'Destroy', todo_list, confirm: 'Really?!? Just going to quit like that?', method: :delete %>
+      </footer>
+    </article>
+  <% end %>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @todo_lists.each do |todo_list| %>
-  <tr>
-    <td><%= todo_list.title %></td>
-    <td><%= link_to 'Show', todo_list %></td>
-    <td><%= link_to 'Edit', edit_todo_list_path(todo_list) %></td>
-    <td><%= link_to 'Destroy', todo_list, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Todo List', new_todo_list_path %>
+</section>

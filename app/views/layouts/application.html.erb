@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<header>
+<header id="global">
   <hgroup>
     <h1>Todo Listinator</h1>
     <h3>Lists of things to get done!</h3>
@@ -15,6 +15,7 @@
   <nav id="global">
     <ul>
       <li><%= link_to "Home", root_url %></li>
+      <li><%= link_to "New Todo List", new_todo_list_path %></li>
     </ul>
   </nav>
 </header>
