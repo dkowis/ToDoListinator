@@ -18,3 +18,36 @@ Then /^the item is completed$/ do
 
   item.complete.should be_true
 end
+
+Given /^that list has (\d+) To\-Do items with no due date$/ do |count|
+  @items ||= Array.new
+
+  count.to_i.times do |x|
+    item = @todo_list.todo_items.build(:entry => "entry #{x}")
+    item.save!
+    @items << item
+  end
+end
+
+Given /^that list has (\d+) To\-Do items that are completed$/ do |count|
+  @items ||= Array.new
+
+  count.to_i.times do |x|
+    item = @todo_list.todo_items.build(:entry => "complete entry #{x}", :complete => true)
+    item.save!
+    @items << item
+  end
+end
+
+When /^I click clean up completed items$/ do
+  #/html/body/div/section/article/footer/a[3]
+  click_link "Clean Up"
+end
+
+Then /^the completed items are gone$/ do
+  @items.each do |item|
+    if item.complete
+      page.should_not have_content item.entry
+    end
+  end
+end
