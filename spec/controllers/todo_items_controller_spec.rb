@@ -161,7 +161,7 @@ describe TodoItemsController do
     it "redirects to the todo_items list" do
       todo_item = TodoItem.create! valid_attributes
       delete :destroy, {:todo_list_id => @todo_list.id, :id => todo_item.to_param}, valid_session
-      response.should redirect_to(todo_list_todo_items_url(@todo_list))
+      response.should redirect_to(todo_list_url(@todo_list))
     end
   end
 
