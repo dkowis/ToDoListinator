@@ -20,7 +20,7 @@ Feature:
     When I click on add a new todo
     Then I am on the new todo page
     When I enter a title with "get stuff done"
-    And the due date is blank
+    And the due date is not required
     And I click Add
     Then it was added successfully
     And I am on the existing list page

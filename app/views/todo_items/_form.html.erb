@@ -15,6 +15,10 @@
     <%= f.label :entry %><br />
     <%= f.text_field :entry %>
   </div>
+    <div class="field">
+      <%= label_tag "Due Date Required?" %>
+      <%= check_box_tag "date_required", "due_date" %>
+    </div>
   <div class="field">
     <%= f.label :due_date %><br />
     <%= f.date_select :due_date %>
@@ -28,6 +32,6 @@
     <%= f.check_box :complete %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Todo Item" %>
   </div>
 <% end %>

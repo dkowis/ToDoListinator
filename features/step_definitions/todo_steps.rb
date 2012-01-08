@@ -40,11 +40,12 @@ When /^I click on add a new todo$/ do
 end
 
 Then /^I am on the new todo page$/ do
-  pending # express the regexp above with the code you wish you had
+  page.should have_content "Create a new Todo for #{@list_title}"
 end
 
-When /^I enter a title with "([^"]*)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+When /^I enter a title with "([^"]*)"$/ do |entry|
+  @todo_item_entry = entry
+  fill_in "todo_item_entry", :with => entry
 end
 
 When /^the due date is blank$/ do
@@ -52,11 +53,15 @@ When /^the due date is blank$/ do
 end
 
 When /^I click Add$/ do
-  pending # express the regexp above with the code you wish you had
+  click_button 'Create Todo Item'
 end
 
 Then /^it was added successfully$/ do
-  pending # express the regexp above with the code you wish you had
+  item_relation = TodoList.where(:title => @list_title).joins(:todo_items).merge(TodoItem.where(:entry => @todo_item_entry))
+
+  item_relation.count.should == 1
+  item = item_relation.first
+  item.should_not be_nil
 end
 
 Then /^I am on the existing list page$/ do
@@ -73,4 +78,7 @@ end
 
 Then /^that item has a due date of "([^"]*)"$/ do |arg1|
   pending # express the regexp above with the code you wish you had
+end
+When /^the due date is not required$/ do
+  uncheck 'date_required'
 end
