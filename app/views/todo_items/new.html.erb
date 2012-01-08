@@ -1,5 +1,11 @@
-<h1>Create a new Todo for <%= @todo_list.title %></h1>
+<article>
+  <header>
+    <h1>Create a new Todo for list: <%= @todo_list.title %></h1>
+  </header>
+  <%= render partial: 'form', locals: { submit_text: "Create Todo Item"} %>
 
-<%= render 'form' %>
+  <%= link_to 'Back', todo_list_todo_items_path(@todo_list) %>
+</article>
 
-<%= link_to 'Back', todo_list_todo_items_path(@todo_list) %>
+
+

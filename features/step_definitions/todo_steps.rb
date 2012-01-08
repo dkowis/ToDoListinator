@@ -41,8 +41,9 @@ When /^I click on add a new todo$/ do
 end
 
 Then /^I am on the new todo page$/ do
-  #TODO: replace this stuff using more appropriate selectors
-  page.should have_content "Create a new Todo for #{@list_title}"
+  xpath = "//article/header/h1"
+  page.should have_xpath xpath
+  page.find(:xpath, xpath).text.should == "Create a new Todo for list: #{@list_title}"
 end
 
 When /^I enter a title with "([^"]*)"$/ do |entry|
@@ -59,11 +60,12 @@ When /^I click Add$/ do
 end
 
 Then /^it was added successfully$/ do
-  item_relation = TodoList.where(:title => @list_title).joins(:todo_items).merge(TodoItem.where(:entry => @todo_item_entry))
+  item_relation = TodoItem.where(:entry => @todo_item_entry).joins(:todo_list).merge(TodoList.where(:title => @list_title))
 
   item_relation.count.should == 1
   item = item_relation.first
   item.should_not be_nil
+  @todo_item = item
 end
 
 Then /^I am on the existing list page$/ do
@@ -99,4 +101,8 @@ def parse_date(date_string)
   else
     Date.parse(due_date)
   end
+end
+
+When /^the due_date should be nil$/ do
+  @todo_item.due_date.should be_nil
 end

@@ -1,5 +1,9 @@
-<h1>Create New Todo List</h1>
+<article>
+  <header>
+    <h1>Create New Todo List</h1>
+  </header>
+  <%= render partial: 'form', locals: { submit_text: "Create Todo List"} %>
 
-<%= render 'form' %>
+  <%= link_to 'Back', todo_lists_path %>
+</article>
 
-<%= link_to 'Back', todo_lists_path %>

@@ -23,6 +23,7 @@ Feature:
     And the due date is not required
     And I click Add
     Then it was added successfully
+    And the due_date should be nil
     And I am on the existing list page
     And a Todo Item exists with the title "get stuff done"
 
