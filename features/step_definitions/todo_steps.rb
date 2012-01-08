@@ -72,13 +72,28 @@ Then /^a Todo Item exists with the title "([^"]*)"$/ do |arg1|
   page.should have_content arg1
 end
 
-When /^I enter a due date of "([^"]*)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+When /^I enter a due date of "([^"]*)"$/ do |date_string|
+  due = parse_date date_string
+
+  select(due.year.to_s, :from => "todo_item[due_date(1i)]")
+  select(due.strftime("%B"), :from => "todo_item[due_date(2i)]")
+  select(due.day.to_s, :from => "todo_item[due_date(3i)]")
+
 end
 
-Then /^that item has a due date of "([^"]*)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then /^that item has a due date of "([^"]*)"$/ do |date_string|
+  due = parse_date date_string
+
+  page.should have_content due.strftime("%y-%m-%d")
 end
 When /^the due date is not required$/ do
   uncheck 'date_required'
+end
+
+def parse_date(date_string)
+  if date_string == "tomorrow"
+    1.day.from_now
+  else
+    Date.parse(due_date)
+  end
 end

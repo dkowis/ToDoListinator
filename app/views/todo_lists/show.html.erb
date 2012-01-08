@@ -8,7 +8,7 @@
 
 <ol>
   <% @todo_list.todo_items.each do |item| %>
-      <li><%= item.entry %></li>
+      <li><%= item.entry %> <%= " -- DUE: #{item.due_date}" if item.due_date %></li>
   <% end %>
 </ol>
 
