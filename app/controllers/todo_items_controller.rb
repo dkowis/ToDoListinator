@@ -83,7 +83,7 @@ class TodoItemsController < ApplicationController
     @todo_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to todo_list_todo_items_url(@todo_list) }
+      format.html { redirect_to todo_list_url(@todo_list) }
       format.json { head :ok }
     end
   end

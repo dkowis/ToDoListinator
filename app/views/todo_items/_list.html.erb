@@ -5,7 +5,14 @@
     <ol>
       <% todo_items.each do |todo_item| %>
           <% if todo_item.complete %>
-              <li class="complete"> <%= todo_item.entry %></li>
+              <li>
+                <span class="complete"><%= todo_item.entry %></span>
+                <%= link_to "Destroy",
+                            todo_list_todo_item_path(todo_item.todo_list, todo_item),
+                            confirm: 'Really destroy the proof of your accomplishments?',
+                            method: :delete
+                %>
+              </li>
           <% else %>
               <li>
                 <%= todo_item.entry %>
