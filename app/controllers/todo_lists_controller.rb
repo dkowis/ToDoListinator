@@ -80,4 +80,11 @@ class TodoListsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def clean
+    @todo_list = TodoList.find(params[:id])
+
+    @todo_list.clean_up
+  end
+
 end
