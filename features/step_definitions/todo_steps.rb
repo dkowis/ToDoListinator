@@ -25,7 +25,7 @@ end
 
 Then /^I'm on the page for my list$/ do
   page.should have_xpath "//section[@id='todo_list']/article/header/h1/text()"
-  
+
   find(:xpath, "//section[@id='todo_list']/article/header/h1/text()").text.should == @list_title
 end
 

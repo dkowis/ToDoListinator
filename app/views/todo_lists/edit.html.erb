@@ -1,6 +1,9 @@
-<h1>Editing todo_list</h1>
+<article>
+  <header>
+    <h1>Editing Todo List: <%= @todo_list.title %></h1>
+  </header>
+  <%= render partial: 'form', locals: { submit_text: "Update Todo List"} %>
+  <%= link_to 'Show', @todo_list %> |
+  <%= link_to 'Back', todo_lists_path %>
+</article>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @todo_list %> |
-<%= link_to 'Back', todo_lists_path %>
