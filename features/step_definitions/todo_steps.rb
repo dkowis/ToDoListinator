@@ -40,6 +40,7 @@ When /^I click on add a new todo$/ do
 end
 
 Then /^I am on the new todo page$/ do
+  #TODO: replace this stuff using more appropriate selectors
   page.should have_content "Create a new Todo for #{@list_title}"
 end
 
@@ -84,6 +85,7 @@ end
 Then /^that item has a due date of "([^"]*)"$/ do |date_string|
   due = parse_date date_string
 
+  #TODO should make this check contextually
   page.should have_content due.strftime("%y-%m-%d")
 end
 When /^the due date is not required$/ do
