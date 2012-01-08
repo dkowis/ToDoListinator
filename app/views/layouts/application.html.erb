@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TodoSample</title>
-  <%= stylesheet_link_tag    "application" %>
+  <title>Todo <%= yield :title_text %></title>
+  <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+<header>
+  <hgroup>
+    <h1>Todo Listinator</h1>
+    <h3>Lists of things to get done!</h3>
+  </hgroup>
+  <nav id="global">
+    <ul>
+      <li><%= link_to "Home", root_url %></li>
+    </ul>
+  </nav>
+</header>
+<div id="main">
+  <%= yield %>
+</div>
+<footer>
+  <p>2012 - David Kowis</p>
+</footer>
 </body>
 </html>
