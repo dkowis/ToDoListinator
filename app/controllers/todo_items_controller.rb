@@ -45,8 +45,6 @@ class TodoItemsController < ApplicationController
   def create
     @todo_item = @todo_list.todo_items.build(params[:todo_item])
 
-    puts params
-
     unless params["date_required"]
       @todo_item.due_date = nil
     end
