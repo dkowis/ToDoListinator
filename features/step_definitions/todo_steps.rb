@@ -110,3 +110,33 @@ end
 When /^I select that a due date is required$/ do
   check 'date_required'
 end
+
+Given /^an existing list with (\d+) todo items$/ do |count|
+  @todo_list = TodoList.create!(:title => "existing list with items")
+
+  @items = []
+
+  count.to_i.times do |x|
+    item = @todo_list.todo_items.build(entry: "Entry #{x}")
+    item.save!
+    @items << item
+  end
+end
+
+Given /^I am on that list's page$/ do
+  visit todo_list_path @todo_list
+end
+
+When /^I click on the complete link for the second item$/ do
+  find(:xpath, "//section[@id='todo_list']/article/ol/li/a[@id='complete_#{@items[1].id}']").click
+end
+
+Then /^that item is marked complete$/ do
+  item = TodoItem.find_by_id @items[1].id
+  item.complete.should == true
+end
+
+
+Then /^I am back on that list's page$/ do
+  current_path.should == todo_list_path(@todo_list)
+end

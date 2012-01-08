@@ -2,10 +2,13 @@
   <article>
     <header>
       <h1><%= @todo_list.title %></h1>
-      <h5><%=  link_to "Add a new Todo", new_todo_list_todo_item_path(@todo_list) %></h5>
+      <h5><%= link_to "Add a new Todo", new_todo_list_todo_item_path(@todo_list) %></h5>
     </header>
     <p>Things to get done:</p>
     <%= render :partial => 'todo_items/list', locals: {todo_items: @todo_list.todo_items} %>
-    <footer><%= link_to 'Edit', edit_todo_list_path(@todo_list) %></footer>
+    <footer>
+      <%= link_to 'Edit', edit_todo_list_path(@todo_list) %> |
+      <%= link_to 'Destroy', @todo_list, confirm: 'Really?!? Just going to quit like that?', method: :delete %>
+    </footer>
   </article>
 </section>

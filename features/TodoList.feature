@@ -40,3 +40,9 @@ Feature:
     And a Todo Item exists with the title "get stuff done now"
     And that item has a due date of "tomorrow"
 
+Scenario: Complete a todo item
+  Given an existing list with 3 todo items
+  And I am on that list's page
+  When I click on the complete link for the second item
+  Then that item is marked complete
+  And I am back on that list's page

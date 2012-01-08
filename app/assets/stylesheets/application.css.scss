@@ -31,8 +31,12 @@ section#todo_lists article {
   margin-bottom: 5px;
 }
 
-tr .field_name {
+td.field_name {
   text-align:right;
   font-size: large;
   font-variant: small-caps;
+}
+
+li.complete {
+  text-decoration: line-through;
 }

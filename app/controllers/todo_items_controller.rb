@@ -88,6 +88,24 @@ class TodoItemsController < ApplicationController
     end
   end
 
+  def complete
+    @todo_item = TodoItem.find(params[:id])
+
+    @todo_item.complete = true
+
+    respond_to do |format|
+      if @todo_item.save!
+        format.html { redirect_to todo_list_path(@todo_list), notice: 'Todo item was successfully completed.' }
+        format.json { render json: @todo_item, status: :created, location: @todo_item }
+      else
+        format.html { redirect_to todo_list_path(@todo_list), notice: 'Could not complete todo, did you actually finish it?' }
+        format.json { render json: @todo_item.errors, status: :unprocessable_entity }
+
+      end
+    end
+
+  end
+
   private
   def get_todo_list
     @todo_list = TodoList.find_by_id(params[:todo_list_id])
