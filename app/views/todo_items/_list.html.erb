@@ -17,7 +17,12 @@
               <li>
                 <%= todo_item.entry %>
                 <%= "-- DUE: #{todo_item.due_date}" if todo_item.due_date %>
-                <%= link_to "Complete", complete_todo_list_todo_item_path(todo_item.todo_list, todo_item), :method => :put, :id => "complete_#{todo_item.id}" %>
+                <%= link_to "Complete", complete_todo_list_todo_item_path(todo_item.todo_list, todo_item),
+                            :method => :put,
+                            :id => "complete_#{todo_item.id}" %> |
+                <%= link_to "Edit", edit_todo_list_todo_item_path(todo_item.todo_list, todo_item),
+                            :id => "edit_#{todo_item.id}"
+                %>
               </li>
           <% end %>
       <% end %>

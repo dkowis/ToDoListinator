@@ -46,7 +46,6 @@ Feature:
     Then that item is marked complete
     And I am back on that list's page
 
-  @wip
   Scenario: Edit a To-Do item
     Given an existing list with 3 To-Do items
     And I am on that list's page
@@ -55,4 +54,4 @@ Feature:
     When I change the entry to "OMG FART"
     And I click "Update To-Do Item"
     Then I am on that list's page
-    And I am notified that the To Do item has been updated
+    And the To Do item has been updated

@@ -66,7 +66,7 @@ class TodoItemsController < ApplicationController
 
     respond_to do |format|
       if @todo_item.update_attributes(params[:todo_item])
-        format.html { redirect_to todo_list_todo_item_url(@todo_list, @todo_item), notice: 'Todo item was successfully updated.' }
+        format.html { redirect_to todo_list_url(@todo_list), notice: 'Todo item was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

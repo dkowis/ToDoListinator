@@ -139,21 +139,25 @@ end
 Then /^I am back on that list's page$/ do
   current_path.should == todo_list_path(@todo_list)
 end
-When /^I click on the edit link for the item (\d+)$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+When /^I click on the edit link for the item (\d+)$/ do |index|
+  index = index.to_i - 1
+  @item = @items[index]
+  find(:xpath, "//section[@id='todo_list']/article/ol/li/a[@id='edit_#{@items[index].id}']").click
 end
 Then /^I am on the edit item page for that item$/ do
-  pending # express the regexp above with the code you wish you had
+  current_path.should == edit_todo_list_todo_item_path(@todo_list, @item)
 end
 
-When /^I change the entry to "([^"]*)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+When /^I change the entry to "([^"]*)"$/ do |entry|
+  fill_in "todo_item[entry]", :with => entry
+  @entry = entry
 end
 
-When /^I click "([^"]*)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+When /^I click "([^"]*)"$/ do |button|
+  click_button button
 end
 
-Then /^I am notified that the To Do item has been updated$/ do
-  pending # express the regexp above with the code you wish you had
+Then /^the To Do item has been updated$/ do
+  item = TodoItem.find_by_id @item.id
+  item.entry.should == @entry
 end
