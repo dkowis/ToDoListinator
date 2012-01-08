@@ -86,7 +86,7 @@ Then /^that item has a due date of "([^"]*)"$/ do |date_string|
   due = parse_date date_string
 
   #To-Do should make this check contextually
-  page.should have_content due.strftime("%Y-%m-%d")
+  page.should have_content due.strftime("%m/%d/%Y")
 end
 
 When /^the due date is not required$/ do
@@ -125,8 +125,9 @@ Given /^I am on that list's page$/ do
   visit todo_list_path @todo_list
 end
 
-When /^I click on the complete link for the second item$/ do
-  find(:xpath, "//section[@id='todo_list']/article/ol/li/a[@id='complete_#{@items[1].id}']").click
+When /^I click on the complete link for item (\d+)$/  do |item|
+  item = item.to_i - 1
+  find(:xpath, "//section[@id='todo_list']/article/ol/li/a[@id='complete_#{@items[item].id}']").click
 end
 
 Then /^that item is marked complete$/ do
@@ -137,4 +138,22 @@ end
 
 Then /^I am back on that list's page$/ do
   current_path.should == todo_list_path(@todo_list)
+end
+When /^I click on the edit link for the item (\d+)$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+Then /^I am on the edit item page for that item$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+When /^I change the entry to "([^"]*)"$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+When /^I click "([^"]*)"$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I am notified that the To Do item has been updated$/ do
+  pending # express the regexp above with the code you wish you had
 end

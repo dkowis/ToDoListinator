@@ -42,7 +42,7 @@ Feature:
   Scenario: Complete a To-Do item
     Given an existing list with 3 To-Do items
     And I am on that list's page
-    When I click on the complete link for the second item
+    When I click on the complete link for item 2
     Then that item is marked complete
     And I am back on that list's page
 
@@ -50,7 +50,7 @@ Feature:
   Scenario: Edit a To-Do item
     Given an existing list with 3 To-Do items
     And I am on that list's page
-    When I click on the edit link for the second item
+    When I click on the edit link for the item 2
     Then I am on the edit item page for that item
     When I change the entry to "OMG FART"
     And I click "Update To-Do Item"
