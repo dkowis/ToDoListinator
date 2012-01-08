@@ -31,6 +31,9 @@ describe TodoListsController do
       delete("/todo_lists/1").should route_to("todo_lists#destroy", :id => "1")
     end
 
+    it "routes to #clean" do
+      put("/todo_lists/1/clean").should route_to("todo_lists#clean", :id => "1")
+    end
 
   end
 end

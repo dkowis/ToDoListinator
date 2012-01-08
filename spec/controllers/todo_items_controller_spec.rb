@@ -127,7 +127,7 @@ describe TodoItemsController do
       it "redirects to the todo_item" do
         todo_item = TodoItem.create! valid_attributes
         put :update, {:todo_list_id => @todo_list.id, :id => todo_item.to_param, :todo_item => valid_attributes}, valid_session
-        response.should redirect_to(todo_list_todo_item_url(@todo_list, todo_item))
+        response.should redirect_to(todo_list_url(@todo_list))
       end
     end
 

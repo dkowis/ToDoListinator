@@ -33,6 +33,10 @@ describe TodoItemsController do
       delete("#{@todo_list_path}/todo_items/1").should route_to("todo_items#destroy", todo_list_id: "1", :id => "1")
     end
 
+    it "routes to #complete" do
+      put("#{@todo_list_path}/todo_items/1/complete").should route_to("todo_items#complete", todo_list_id: "1", id: "1")
+    end
+
 
   end
 end

@@ -1,5 +1,6 @@
 TodoSample::Application.routes.draw do
   resources :todo_lists do
+    put 'clean', :on => :member
     resources :todo_items do
       put 'complete', :on => :member
     end
