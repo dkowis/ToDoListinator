@@ -161,4 +161,19 @@ describe TodoListsController do
     end
   end
 
+  describe "PUT clean" do
+    it "cleans up the todo list" do
+      todo_list = TodoList.create! valid_attributes
+      TodoList.any_instance.should_receive(:clean_up)
+      put :clean, {id: todo_list.id}, valid_session
+    end
+
+    it "redirects to the todo_list" do
+      todo_list = TodoList.create! valid_attributes
+      put :clean, {id: todo_list.id}, valid_session
+
+      response.should redirect_to todo_list
+    end
+  end
+
 end

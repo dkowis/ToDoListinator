@@ -44,7 +44,7 @@ class TodoListsController < ApplicationController
 
     respond_to do |format|
       if @todo_list.save
-        format.html { redirect_to @todo_list, notice: 'Todo list was successfully created.' }
+        format.html { redirect_to @todo_list, notice: 'To-Do list was successfully created.' }
         format.json { render json: @todo_list, status: :created, location: @todo_list }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class TodoListsController < ApplicationController
 
     respond_to do |format|
       if @todo_list.update_attributes(params[:todo_list])
-        format.html { redirect_to @todo_list, notice: 'Todo list was successfully updated.' }
+        format.html { redirect_to @todo_list, notice: 'To-Do list was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -85,6 +85,10 @@ class TodoListsController < ApplicationController
     @todo_list = TodoList.find(params[:id])
 
     @todo_list.clean_up
+
+    respond_to do |format|
+      format.html { redirect_to @todo_list, notice: "To-Do list was successfully cleansed."}
+    end
   end
 
 end
