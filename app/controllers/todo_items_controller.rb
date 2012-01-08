@@ -47,7 +47,7 @@ class TodoItemsController < ApplicationController
 
     respond_to do |format|
       if @todo_item.save
-        format.html { redirect_to todo_list_todo_item_url(@todo_list, @todo_item), notice: 'Todo item was successfully created.' }
+        format.html { redirect_to todo_list_path(@todo_list), notice: 'Todo item was successfully created.' }
         format.json { render json: @todo_item, status: :created, location: @todo_item }
       else
         format.html { render action: "new" }

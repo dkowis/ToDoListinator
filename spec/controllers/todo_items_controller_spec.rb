@@ -85,7 +85,7 @@ describe TodoItemsController do
 
       it "redirects to the created todo_item" do
         post :create, {:todo_list_id => @todo_list.id, :todo_item => valid_attributes}, valid_session
-        response.should redirect_to(todo_list_todo_item_url(@todo_list, TodoItem.last))
+        response.should redirect_to(todo_list_url(@todo_list))
       end
     end
 

@@ -1,11 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<%=  link_to 'Add a new Todo', new_todo_list_todo_item_path(@todo_list) %>
+<%= link_to 'Add a new Todo', new_todo_list_todo_item_path(@todo_list) %>
 <p>
   <b>Title:</b>
   <%= @todo_list.title %>
 </p>
 
+<ol>
+  <% @todo_list.todo_items.each do |item| %>
+      <li><%= item.entry %></li>
+  <% end %>
+</ol>
 
 <%= link_to 'Edit', edit_todo_list_path(@todo_list) %> |
 <%= link_to 'Back', todo_lists_path %>

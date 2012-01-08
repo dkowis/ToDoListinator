@@ -65,11 +65,11 @@ Then /^it was added successfully$/ do
 end
 
 Then /^I am on the existing list page$/ do
-  pending # express the regexp above with the code you wish you had
+  step %q{I'm on the page for my list}
 end
 
 Then /^a Todo Item exists with the title "([^"]*)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+  page.should have_content arg1
 end
 
 When /^I enter a due date of "([^"]*)"$/ do |arg1|
