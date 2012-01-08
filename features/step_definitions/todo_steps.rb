@@ -106,3 +106,7 @@ end
 When /^the due_date should be nil$/ do
   @todo_item.due_date.should be_nil
 end
+
+When /^I select that a due date is required$/ do
+  check 'date_required'
+end

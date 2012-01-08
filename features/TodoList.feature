@@ -33,6 +33,7 @@ Feature:
     Then I am on the new todo page
     When I enter a title with "get stuff done now"
     And I enter a due date of "tomorrow"
+    And I select that a due date is required
     And I click Add
     Then it was added successfully
     And I am on the existing list page
