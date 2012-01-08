@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%=  link_to 'Add a new Todo', new_todo_path(@todo_list) %>
+<%=  link_to 'Add a new Todo', new_todo_list_todo_item_path(@todo_list) %>
 <p>
   <b>Title:</b>
   <%= @todo_list.title %>
