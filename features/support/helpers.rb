@@ -1,7 +1,10 @@
 def parse_date(date_string)
-  if date_string == "tomorrow"
-    1.day.from_now
-  else
-    Date.parse(due_date)
+  case date_string
+    when "tomorrow"
+      1.day.from_now
+    when "yesterday"
+      1.day.ago
+    else
+      Date.parse(date_string)
   end
 end

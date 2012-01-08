@@ -5,12 +5,16 @@ end
 Given /^that list has a To\-Do that was due "([^"]*)"$/ do |date_due|
   due = parse_date date_due
 
+  @todo_item = @todo_list.todo_items.build(:entry => "NYAN", :due_date => due)
+  @todo_item.save!(:validate => false)
 end
 
 When /^I complete that item$/ do
-  pending # express the regexp above with the code you wish you had
+  find(:xpath, "//section[@id='todo_list']/article/ol/li/a[@id='complete_#{@todo_item.id}']").click
 end
 
 Then /^the item is completed$/ do
-  pending # express the regexp above with the code you wish you had
+  item = TodoItem.find_by_id @todo_item.id
+
+  item.complete.should be_true
 end
