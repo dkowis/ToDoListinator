@@ -2,7 +2,7 @@
   <article>
     <header>
       <h1><%= @todo_list.title %></h1>
-      <h5><%= link_to "Add a new Todo", new_todo_list_todo_item_path(@todo_list) %></h5>
+      <h5><%= link_to "Add a new To-Do", new_todo_list_todo_item_path(@todo_list) %></h5>
     </header>
     <p>Things to get done:</p>
     <%= render :partial => 'todo_items/list', locals: {todo_items: @todo_list.todo_items} %>

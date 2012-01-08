@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Todo <%= yield :title_text %></title>
+  <title>To-Do <%= yield :title_text %></title>
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -9,14 +9,14 @@
 <body>
 <header id="global">
   <hgroup>
-    <h1>Todo Listinator</h1>
+    <h1>To-Do Listinator</h1>
 
     <h3>Lists of things to get done!</h3>
   </hgroup>
   <nav id="global">
     <ul>
       <li><%= link_to "Home", root_url %></li>
-      <li><%= link_to "New Todo List", new_todo_list_path %></li>
+      <li><%= link_to "New To-Do List", new_todo_list_path %></li>
     </ul>
   </nav>
 </header>

@@ -1,8 +1,8 @@
 <article>
   <header>
-    <h1>Create a new Todo for list: <%= @todo_list.title %></h1>
+    <h1>Create a new To-Do for list: <%= @todo_list.title %></h1>
   </header>
-  <%= render partial: 'form', locals: { submit_text: "Create Todo Item"} %>
+  <%= render partial: 'form', locals: { submit_text: "Create To-Do Item"} %>
 
   <%= link_to 'Back', todo_list_path(@todo_list) %>
 </article>

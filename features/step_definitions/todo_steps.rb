@@ -3,11 +3,11 @@ Given /^I am on the main page$/ do
 end
 
 When /^I click the create new list link$/ do
-  click_link('New Todo List')
+  click_link('New To-Do List')
 end
 
 Then /^I am on the create new list page$/ do
-  page.should have_content "Create New Todo List"
+  page.should have_content "Create New To-Do List"
 end
 
 When /^I fill in a list name$/ do
@@ -16,7 +16,7 @@ When /^I fill in a list name$/ do
 end
 
 When /^I click submit$/ do
-  click_button "Create Todo List"
+  click_button "Create To-Do List"
 end
 
 Then /^my list is created$/ do
@@ -36,14 +36,14 @@ Given /^I am on an existing list page$/ do
   step %q{I'm on the page for my list}
 end
 
-When /^I click on add a new todo$/ do
-  click_link "Add a new Todo"
+When /^I click on add a new To-Do$/ do
+  click_link "Add a new To-Do"
 end
 
-Then /^I am on the new todo page$/ do
+Then /^I am on the new To-Do page$/ do
   xpath = "//article/header/h1"
   page.should have_xpath xpath
-  page.find(:xpath, xpath).text.should == "Create a new Todo for list: #{@list_title}"
+  page.find(:xpath, xpath).text.should == "Create a new To-Do for list: #{@list_title}"
 end
 
 When /^I enter a title with "([^"]*)"$/ do |entry|
@@ -56,7 +56,7 @@ When /^the due date is blank$/ do
 end
 
 When /^I click Add$/ do
-  click_button 'Create Todo Item'
+  click_button 'Create To-Do Item'
 end
 
 Then /^it was added successfully$/ do
@@ -72,7 +72,7 @@ Then /^I am on the existing list page$/ do
   step %q{I'm on the page for my list}
 end
 
-Then /^a Todo Item exists with the title "([^"]*)"$/ do |arg1|
+Then /^a To-Do Item exists with the title "([^"]*)"$/ do |arg1|
   page.should have_content arg1
 end
 
@@ -88,7 +88,7 @@ end
 Then /^that item has a due date of "([^"]*)"$/ do |date_string|
   due = parse_date date_string
 
-  #TODO should make this check contextually
+  #To-Do should make this check contextually
   page.should have_content due.strftime("%y-%m-%d")
 end
 When /^the due date is not required$/ do
@@ -111,7 +111,7 @@ When /^I select that a due date is required$/ do
   check 'date_required'
 end
 
-Given /^an existing list with (\d+) todo items$/ do |count|
+Given /^an existing list with (\d+) To-Do items$/ do |count|
   @todo_list = TodoList.create!(:title => "existing list with items")
 
   @items = []
