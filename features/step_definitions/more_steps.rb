@@ -40,7 +40,6 @@ Given /^that list has (\d+) To\-Do items that are completed$/ do |count|
 end
 
 When /^I click clean up completed items$/ do
-  #/html/body/div/section/article/footer/a[3]
   click_link "Clean Up"
 end
 
@@ -50,4 +49,27 @@ Then /^the completed items are gone$/ do
       page.should_not have_content item.entry
     end
   end
+end
+
+Then /^the todo with a due date is at the top of the list$/ do
+  page.find(:xpath, "//section[@id='todo_list']/article/ol/li[1]").text.should include @todo_item_entry
+end
+
+When /^I create To-Do items:$/ do |table|
+  @todos = Array.new
+  # table is a Cucumber::Ast::Table
+  table.hashes.each do |row|
+    click_link "Add a new To-Do"
+
+    todo = TodoItem.new(:entry => row['entry'], :due_date => parse_date(row['due_date']))
+    fill_in "todo_item[entry]", :with => todo.entry
+    fill_in "todo_item[due_date]", :with => todo.due_date
+    click_button 'Create To-Do Item'
+    @todos << todo
+  end
+end
+
+
+Then /^the todo with the entry "([^"]*)" is the first$/ do |entry|
+  page.find(:xpath, "//section[@id='todo_list']/article/ol/li[1]").text.should include entry
 end

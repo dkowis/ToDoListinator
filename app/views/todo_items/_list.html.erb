@@ -3,7 +3,7 @@
 <% else %>
 
     <ol>
-      <% todo_items.each do |todo_item| %>
+      <% todo_items.sort.each do |todo_item| %>
           <% if todo_item.complete %>
               <li>
                 <span class="complete"><%= todo_item.entry %></span>
