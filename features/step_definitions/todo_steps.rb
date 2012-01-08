@@ -52,7 +52,7 @@ When /^I enter a title with "([^"]*)"$/ do |entry|
 end
 
 When /^the due date is blank$/ do
-  pending # express the regexp above with the code you wish you had
+  page.find(:xpath, "//*[@id='due_date']").text.should be_empty
 end
 
 When /^I click Add$/ do
@@ -79,18 +79,16 @@ end
 When /^I enter a due date of "([^"]*)"$/ do |date_string|
   due = parse_date date_string
 
-  select(due.year.to_s, :from => "todo_item[due_date(1i)]")
-  select(due.strftime("%B"), :from => "todo_item[due_date(2i)]")
-  select(due.day.to_s, :from => "todo_item[due_date(3i)]")
-
+  fill_in 'due_date', :with => due.strftime("%m/%d/%Y")
 end
 
 Then /^that item has a due date of "([^"]*)"$/ do |date_string|
   due = parse_date date_string
 
   #To-Do should make this check contextually
-  page.should have_content due.strftime("%y-%m-%d")
+  page.should have_content due.strftime("%Y-%m-%d")
 end
+
 When /^the due date is not required$/ do
   uncheck 'date_required'
 end

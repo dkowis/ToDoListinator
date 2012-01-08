@@ -45,9 +45,8 @@ class TodoItemsController < ApplicationController
   def create
     @todo_item = @todo_list.todo_items.build(params[:todo_item])
 
-    unless params["date_required"]
-      @todo_item.due_date = nil
-    end
+    todo_date = params[:todo_item][:due_date]
+    @todo_item.due_date = Date.strptime(todo_date, "%m/%d/%Y") if todo_date and !todo_date.empty?
 
     respond_to do |format|
       if @todo_item.save

@@ -20,7 +20,7 @@ Feature:
     When I click on add a new To-Do
     Then I am on the new To-Do page
     When I enter a title with "get stuff done"
-    And the due date is not required
+    And the due date is blank
     And I click Add
     Then it was added successfully
     And the due_date should be nil
@@ -33,7 +33,6 @@ Feature:
     Then I am on the new To-Do page
     When I enter a title with "get stuff done now"
     And I enter a due date of "tomorrow"
-    And I select that a due date is required
     And I click Add
     Then it was added successfully
     And I am on the existing list page

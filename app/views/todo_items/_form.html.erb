@@ -26,10 +26,6 @@
         <td class="entry_field"><%= f.text_field :entry %></td>
       </tr>
       <tr>
-        <td class="field_name"><%= label_tag "Due Date Required?" %></td>
-        <td class="entry_field"><%= check_box_tag "date_required", "Y" %></td>
-      </tr>
-      <tr>
         <td class="field_name"><%= f.label :due_date %></td>
         <td class="entry_field"><%=  f.text_field :due_date, :id => "due_date" %></td>
       </tr>
