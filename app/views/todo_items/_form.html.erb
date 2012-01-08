@@ -1,3 +1,11 @@
+<% content_for :head_tag do%>
+    <script type="text/javascript">
+      $(function(){
+          $("#due_date").datepicker();
+      });
+    </script>
+<% end %>
+
 <%= form_for([@todo_list, @todo_item]) do |f| %>
     <% if @todo_item.errors.any? %>
         <div id="error_explanation">
@@ -23,7 +31,7 @@
       </tr>
       <tr>
         <td class="field_name"><%= f.label :due_date %></td>
-        <td class="entry_field"><%=  f.date_select :due_date %></td>
+        <td class="entry_field"><%=  f.text_field :due_date, :id => "due_date" %></td>
       </tr>
       <tr>
         <td colspan="2"><%= f.submit submit_text %></td>
