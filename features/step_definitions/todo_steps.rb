@@ -24,8 +24,9 @@ Then /^my list is created$/ do
 end
 
 Then /^I'm on the page for my list$/ do
-  page.should have_content "Title:"
-  page.should have_content @list_title
+  page.should have_xpath "//section[@id='todo_list']/article/header/h1/text()"
+  
+  find(:xpath, "//section[@id='todo_list']/article/header/h1/text()").text.should == @list_title
 end
 
 Given /^I am on an existing list page$/ do
