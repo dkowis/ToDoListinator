@@ -1,1 +1,8 @@
 A simple ToDo application.
+
+Using Cucumber and rspec to verify functionality
+
+    rake cucumber
+and
+    rake spec
+to test everything
