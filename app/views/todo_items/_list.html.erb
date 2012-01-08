@@ -1,0 +1,11 @@
+<% if todo_items.empty? %>
+    <p>Wow! You're all done here!</p>
+<% else %>
+
+    <ol>
+      <% todo_items.each do |todo_item| %>
+          <li><%= todo_item.entry %>
+            <%= "-- DUE: #{todo_item.due_date}" if todo_item.due_date %></li>
+      <% end %>
+    </ol>
+<% end %>
